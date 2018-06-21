@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="it.polito.tdp.seriea.SerieAController">
+<BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.seriea.SerieAController">
    <top>
       <Label text="Serie A (Simulazione d' esame del 07/06/2017)" BorderPane.alignment="CENTER">
          <font>
@@ -43,7 +42,7 @@
                   <ChoiceBox fx:id="boxSeason" prefWidth="200.0" GridPane.columnIndex="1" />
                   <ChoiceBox fx:id="boxTeam" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Button mnemonicParsing="false" onAction="#handleCarica" text="Carica partite" GridPane.columnIndex="2" />
-                  <Button mnemonicParsing="false" onAction="#handleDomino" text="Domino" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button fx:id="btnDominio" mnemonicParsing="false" onAction="#handleDomino" text="Domino" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <TextArea fx:id="txtResult" prefRowCount="20" />

@@ -3,11 +3,35 @@ package it.polito.tdp.seriea.model;
 public class Team {
 	
 	private String team ;
+	
+	//aggiunta per avere il valore finale della classifica
+	private int punti;
 
 	public Team(String team) {
 		super();
 		this.team = team;
+		punti=0;
 	}
+
+	
+	@Override
+	public String toString() {
+		return "Squadra: "+ team+" Punti: "+punti;
+	}
+	
+	public int getPunti() {
+		return punti;
+	}
+
+	public void setPunti(int punti) {
+		this.punti += punti;
+	}
+
+	public void Azzera() {
+		this.punti=0;
+	}
+	
+	
 
 	/**
 	 * @return the team
@@ -26,10 +50,7 @@ public class Team {
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
-	@Override
-	public String toString() {
-		return team;
-	}
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -61,7 +82,11 @@ public class Team {
 			return false;
 		return true;
 	}
-	
+
+
+
+
+
 	
 	
 

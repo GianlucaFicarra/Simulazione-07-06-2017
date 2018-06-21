@@ -13,8 +13,8 @@ public class TestSerieADAO {
 		List<Season> seasons = dao.listSeasons() ;
 		System.out.println(seasons);
 		
-		List<Team> teams = dao.listTeams() ;
-		System.out.println(teams);
+		//List<Team> teams = dao.listTeams() ;
+		//System.out.println(teams);
 
 
 	}

@@ -41,6 +41,20 @@ public class Match {
 		this.ftag = ftag;
 		this.ftr = ftr;
 	}
+	
+	public Match(int id, Season season, Team homeTeam, Team awayTeam, String ftr) { //usato 
+		this.id = id;
+		this.season = season;
+		this.homeTeam = homeTeam;
+		this.awayTeam = awayTeam;
+		this.ftr = ftr;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Match [id=" + id + "]";
+	}
 
 	/**
 	 * @return the id

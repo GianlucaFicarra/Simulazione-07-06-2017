@@ -3,6 +3,7 @@ package it.polito.tdp.seriea.model;
 public class Season {
 	private int season ;
 	private String description ;
+	
 	public Season(int season, String description) {
 		super();
 		this.season = season;
@@ -63,7 +64,7 @@ public class Season {
 	 */
 	@Override
 	public String toString() {
-		return description;
+		return ""+season+"["+description+"]";
 	}
 	
 	
