@@ -24,7 +24,6 @@ public class Model {
 	
 	private List<Team> team;
 	private TeamIdMap teamIdMap;
-	private List<Team> teamStagione;
 	
 	// grafo delle partite (relativo alla stagione selezionata)
 	private SimpleDirectedWeightedGraph<Team, DefaultWeightedEdge> grafo;
@@ -44,8 +43,6 @@ public class Model {
 		 * per avere gli oggetti squadra e non solo l'id*/
 		teamIdMap = new TeamIdMap();
 		team = dao.listTeams(teamIdMap); 
-		
-		teamStagione = new LinkedList(); //sara la lista con le squadre di quella sola stagione
 	}
 
 
@@ -55,7 +52,6 @@ public class Model {
 
 
 	public void creaGrafo(Season stagione) {
-		teamStagione = new LinkedList(); //inizzializzo nel caso di operazioni successive;
 		
 		grafo = new SimpleDirectedWeightedGraph<Team, DefaultWeightedEdge>(DefaultWeightedEdge.class);
 		
@@ -63,22 +59,18 @@ public class Model {
 		match = dao.getMatchesFromSeason(teamIdMap, stagione);
 		
 		for(Match m: match) {
-			teamStagione.add(m.getHomeTeam());
-			teamStagione.add(m.getAwayTeam());
-		}
-	
-		//aggiungo i vertici(squadre che hanno giocato in quella stagione)
-		Graphs.addAllVertices(grafo, team);
+			
 		
 		//Il peso tra TeamA e TeamB: +1 se TeamA vince, 0 se hanno pareggiato, -1 se TeamA ha perso.
-		for(Match m: match) {
-			
+		
 			Team teamHome = m.getHomeTeam();
 			Team teamAway = m.getAwayTeam();
 			
+			grafo.addVertex(teamHome);
+			grafo.addVertex(teamAway);
+			
 			int peso=0;
 			
-				
 				switch (m.getFtr()) { //carattere che indica l'esito della partita
 				case "H":
 					peso = +1;
@@ -102,6 +94,7 @@ public class Model {
 			
 		}
 		
+		System.out.println("\nVertici: "+grafo.vertexSet().size()+ "Archi: " + grafo.edgeSet().size());
 		
 	}
 	
